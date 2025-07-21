@@ -49,6 +49,8 @@ for a in range(83):
             full_url = genre_url + "?page=" + str(page_index) # iterate to next page
             get_summaries(full_url)
             page_index += 1
+            if page_index % 10 == 0: # every 10 pages use new driver
+                driver = get_selenium() # new driver each time because of bot detection
             full_url = genre_url
             time.sleep(2) # website has bot detection
             screen_height = driver.execute_script("return window.screen.height;")
